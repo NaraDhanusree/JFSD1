@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Videos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fb;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Horizontal Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 10px 20px;
+            display: inline-block;
+            transition: background-color 0.3s, padding-left 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #34495e;
+            padding-left: 25px;
+        }
+
+        /* Logout Button in Navbar */
+        .logout-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .logout-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Content Styles */
+        .content {
+            margin-top: 80px; /* Increased margin to make space for the navbar */
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            border: 1px solid #d1d8e0;
+            border-radius: 8px;
+            width: 60%;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .form-container h2 {
+            margin-top: 0;
+            color: #34495e;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Video Display Styles */
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .video-box {
+            background-color: #ffffff;
+            border: 1px solid #d1d8e0;
+            border-radius: 8px;
+            width: 60%;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        .video-box h3 {
+            margin-top: 0;
+            color: #34495e;
+        }
+
+        .video-box iframe {
+            width: 100%;
+            height: 315px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .form-container, .video-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Horizontal Navbar -->
+    <div class="navbar">
+        <a href="#" onclick="navigateToQuizzes()">Knowledge Checks</a>
+        <a href="#" onclick="navigateToHandouts()">Course Material</a>
+        <a href="#" onclick="navigateToAssignments()">Take Home Tasks</a>
+        <a href="#" onclick="navigateToVideos()">Tutorial Videos</a>
+        <a href="#" onclick="navigateToLectures()">Seminars</a>
+        <button class="FacultyHome.jsp" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content">
+        <!-- Upload Video Form -->
+        <div class="form-container">
+            <h2>Upload Tutorial Video</h2>
+            <form id="uploadForm" onsubmit="uploadVideo(event)">
+                <input type="text" id="videoTitle" class="input-field" placeholder="Video Title" required><br>
+                <textarea id="videoDescription" class="input-field" placeholder="Video Description" rows="4" required></textarea><br>
+                <input type="text" id="videoUrl" class="input-field" placeholder="YouTube Video URL" required><br>
+                <button type="submit">Upload Video</button>
+            </form>
+        </div>
+
+        <!-- Display Uploaded Videos -->
+        <div class="video-container" id="videoList">
+            <!-- Dynamically added videos will appear here -->
+        </div>
+    </div>
+
+    <script>
+        // Function to navigate to different sections
+        function navigateToQuizzes() {
+            location.replace("quizzes.html");
+        }
+
+        function navigateToHandouts() {
+            location.replace("handouts.html");
+        }
+
+        function navigateToAssignments() {
+            location.replace("assignments.html");
+        }
+
+        function navigateToVideos() {
+            location.replace("videos.html");
+        }
+
+        function navigateToLectures() {
+            location.replace("lectures.html");
+        }
+
+        function logout() {
+            alert("You have logged out.");
+            window.location.href = "FacultyHome.jsp"; // Adjust the URL based on your logout path
+        }
+
+        // Function to handle the form submission and display the uploaded video
+        function uploadVideo(event) {
+            event.preventDefault(); // Prevent page reload
+
+            const title = document.getElementById('videoTitle').value;
+            const description = document.getElementById('videoDescription').value;
+            const videoUrl = document.getElementById('videoUrl').value;
+
+            // Create a new video HTML
+            const videoBox = document.createElement('div');
+            videoBox.classList.add('video-box');
+            videoBox.innerHTML = `
+                <h3>${title}</h3>
+                <p><strong>Description:</strong> ${description}</p>
+                <iframe src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            `;
+
+            // Append the new video to the list
+            document.getElementById('videoList').appendChild(videoBox);
+
+            // Clear the form after submission
+            document.getElementById('uploadForm').reset();
+        }
+    </script>
+</body>
+</html>

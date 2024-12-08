@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Curriculum</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logout-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .logout-button:hover {
+            background-color: #c0392b;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        .semester {
+            background-color: #ffffff;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .module {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Student Curriculum - Computer Science</h1>
+    <!-- Logout Button -->
+    <button class="StudentHome.jsp" onclick="window.location.href='/StudentHome.jsp'">Logout</button>
+</header>
+
+<div class="content">
+    <h2>Semester 1: Introduction to Computer Science</h2>
+    <div class="semester">
+        <div class="module"><strong>Module 1:</strong> Fundamentals of Computing</div>
+        <div class="module"><strong>Module 2:</strong> Programming Basics</div>
+        <div class="module"><strong>Module 3:</strong> Algorithms and Problem Solving</div>
+        <div class="module"><strong>Module 4:</strong> Data Structures</div>
+    </div>
+
+    <h2>Semester 2: Intermediate Computer Science</h2>
+    <div class="semester">
+        <div class="module"><strong>Module 1:</strong> Object-Oriented Programming (OOP)</div>
+        <div class="module"><strong>Module 2:</strong> Web Development Basics</div>
+        <div class="module"><strong>Module 3:</strong> Databases and SQL</div>
+        <div class="module"><strong>Module 4:</strong> Computer Networks</div>
+    </div>
+
+    <h2>Semester 3: Advanced Topics</h2>
+    <div class="semester">
+        <div class="module"><strong>Module 1:</strong> Software Development and Lifecycle</div>
+        <div class="module"><strong>Module 2:</strong> Operating Systems</div>
+        <div class="module"><strong>Module 3:</strong> Data Science and Machine Learning</div>
+        <div class="module"><strong>Module 4:</strong> Cybersecurity</div>
+    </div>
+
+    <h2>Semester 4: Specialized Topics and Capstone</h2>
+    <div class="semester">
+        <div class="module"><strong>Module 1:</strong> Cloud Computing and DevOps</div>
+        <div class="module"><strong>Module 2:</strong> Artificial Intelligence and Deep Learning</div>
+        <div class="module"><strong>Module 3:</strong> Mobile App Development</div>
+        <div class="module"><strong>Module 4:</strong> Capstone Project</div>
+    </div>
+
+    <h2>Electives (Optional)</h2>
+    <div class="semester">
+        <div class="module"><strong>Game Development</strong></div>
+        <div class="module"><strong>Big Data and Distributed Systems</strong></div>
+        <div class="module"><strong>Human-Computer Interaction</strong></div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Student Curriculum Portal. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
